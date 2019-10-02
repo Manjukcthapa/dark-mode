@@ -1,13 +1,14 @@
 import React from "react";
 import moment from "moment";
-import {
-  LineChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip
-} from "recharts";
+// import {
+//   LineChart,
+//   Line,
+//   CartesianGrid,
+//   XAxis,
+//   YAxis,
+//   Tooltip
+// } from "recharts";
+import { AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Area } from 'recharts';
 
 const Chart = ({ sparklineData }) => {
   const formattedData = sparklineData
@@ -15,7 +16,7 @@ const Chart = ({ sparklineData }) => {
       if (idx % 6 === 0) {
         const timeToSubtract = 168 - idx;
         const date = moment()
-          .subtract(timeToSubtract, "hours")
+          .subtract(timeToSubtract, "hour")
           .format("ddd h:mma");
         return { value: price, date };
       } else if (idx === sparklineData.length - 1) {
@@ -27,13 +28,20 @@ const Chart = ({ sparklineData }) => {
     .filter(data => data);
 
   return (
-    <LineChart width={1100} height={300} data={formattedData}>
-      <Line type="monotone" dataKey="value" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey="date" interval={3} />
-      <YAxis />
-      <Tooltip />
-    </LineChart>
+    // <LineChart width={1100} height={300} data={formattedData}>
+    //   <Line type="monotone" dataKey="value" stroke="#8884d8" />
+    //   <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+    //   <XAxis dataKey="date" interval={3} />
+    //   <YAxis />
+    //   <Tooltip />
+    // </LineChart>
+    <AreaChart width={1100} height={300} data={formattedData}>
+    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+    <XAxis dataKey="date" interval={3} />
+    <YAxis />
+    <Tooltip />
+    <Area type="monotone" dataKey="value" stroke="#8884d8" fill='#black' />
+  </AreaChart>
   );
 };
 
