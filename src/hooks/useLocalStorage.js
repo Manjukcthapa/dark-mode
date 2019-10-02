@@ -1,6 +1,6 @@
 import React from React;
 
-export const useLocalStorage = () => {
+export const useLocalStorage = (key, initialValue) => {
 
 
 }
