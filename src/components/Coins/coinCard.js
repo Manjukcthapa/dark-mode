@@ -1,6 +1,6 @@
 import React from "react";
 import './Coin.css';
-const Currency = (props) => {
+const Coincard = (props) => {
     return (
         <div className="currienies">
              <div className="coinnames">
@@ -16,4 +16,4 @@ const Currency = (props) => {
     )
 };
 
-export default Currency;
+export default CoinCard;
